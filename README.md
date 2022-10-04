@@ -11,11 +11,11 @@
   Remove the spaces from the string, then return the resultant string.
   You are given a table 'nospace' with column 'x', return a table with column 'x' and your result in a column named 'res'.
   
-  **Solution**
+  **Solution:**
 
 ```sql
   SELECT x, REPLACE(x, ' ', '') AS res 
-  FROM nospace
+  FROM nospace;
 ```
 
 ## **2. Century From Year**
@@ -125,4 +125,106 @@ So the maximum value that you can obtain is 9.
     AS res
   FROM expression_matter;
 ```
+
+## **6.Count Odd Numbers below n**
+
+Task.
+Given a number n, return the number of positive odd numbers below n.
+
+Examples (Input -> Output):
+```
+7  -> 3 (because odd numbers below 7 are [1, 3, 5])
+15 -> 7 (because odd numbers below 15 are [1, 3, 5, 7, 9, 11, 13])
+```
+
+**Solution:**
+
+```sql
+  SELECT n, n/2 AS res FROM oddcount;
+```
+
+## **7.  Sum of odd numbers**
+
+Task.
+Given the triangle of consecutive odd numbers:
+```
+
+             1
+          3     5
+       7     9    11
+   13    15    17    19
+21    23    25    27    29
+...
+```
+Calculate the row sums of this triangle from the row index (starting at index 1). The table nums contains the integer n (the input row index).
+
+Examples:
+```
+n = 1 -> res = 1
+n = 2 -> res = 8 (because 3 + 5 = 8)
+n = 3 -> res = 27 (because 7 + 9 + 11 = 27)
+```
+
+**Solution:**
+
+```sql
+  SELECT n * n * n AS res
+  FROM nums;
+```
+
+## **8. Fake Binary**
+
+Task.
+Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
+Note: input will never be an empty string
+
+**Solution:**
+
+```sql
+  SELECT x,
+  regexp_replace(regexp_replace(x, '[0-4]', '0', 'g'), '[5-9]', '1', 'g') AS res
+  FROM fakebin;
+```
+
+## **9. Convert to Hexadecimal**
+
+Task.
+Turn the numeric columns (arms, legs) into equivalent hexadecimal values.
+
+monsters table schema:
+```
+- id
+- name
+- legs
+- arms
+- characteristics
+```
+
+**Solution:**
+
+```sql
+  SELECT to_hex(legs) AS legs, 
+          to_hex(arms) AS arms 
+  FROM monsters;
+```
+
+## **10. Rounding Decimals**
+
+Task.
+Given the following table 'decimals':
+```
+- id
+- number1
+- number2
+```
+Return a table with two columns (number1, number2), the value in number1 should be rounded down and the value in number2 should be rounded up.
+
+**Sollution:**
+
+```sql
+  SELECT floor(number1) AS number1, 
+         ceiling(number2) AS number2 
+  FROM decimals
+```
+
 </details>
