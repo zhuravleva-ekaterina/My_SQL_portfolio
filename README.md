@@ -7,6 +7,7 @@
 ## **1. Remove String Spaces**
   
   Task.
+  
   Remove the spaces from the string, then return the resultant string.
   You are given a table 'nospace' with column 'x', return a table with column 'x' and your result in a column named 'res'.
   
@@ -20,6 +21,7 @@
 ## **1. Century From Year**
   
   Task.
+  
   Given a year, return the century it is in.
 
 Examples
@@ -27,6 +29,7 @@ Examples
 1900 --> 19
 1601 --> 17
 2000 --> 20
+  
 In SQL, you will be given a table years with a column yr for the year. Return a table with a column century.
   
   **Solution**
@@ -37,6 +40,7 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
 ```
 
   ** Alternative solution**
+  
 ```sql
   SELECT 
     CASE
@@ -47,6 +51,7 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
 ```
 
   ** Alternative solution**
+  
 ```sql
   SELECT
   EXTRACT(CENTURY FROM TO_DATE(yr::text, 'YYYY')) AS century
