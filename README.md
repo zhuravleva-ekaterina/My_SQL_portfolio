@@ -24,7 +24,8 @@
   
   Given a year, return the century it is in.
 
-Examples
+Examples:
+```
 1705 --> 18
   
 1900 --> 19
@@ -32,17 +33,18 @@ Examples
 1601 --> 17
   
 2000 --> 20
+``` 
 
 In SQL, you will be given a table years with a column yr for the year. Return a table with a column century.
   
-  **Solution**
+  **Solution:**
 
 ```sql
   SELECT (yr + 99) / 100 as century
   FROM years;
 ```
 
-  **Alternative solution**
+  **Alternative solution:**
   
 ```sql
   SELECT 
@@ -53,7 +55,7 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
   FROM years;
 ```
 
-  **Alternative solution**
+  **Alternative solution:**
   
 ```sql
   SELECT EXTRACT(CENTURY FROM TO_DATE(yr::text, 'YYYY')) AS century
@@ -67,19 +69,21 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
 
 Example:
 
+```
 name = "John" -> greeting = "Hello, John how are you doing today?"
+```
 
-  **Solution**
+  **Solution:**
   
 ```sql
-  SELECT 'Hello, ' || name || ' how are you doing today?' AS greeting FROM person
+  SELECT 'Hello, ' || name || ' how are you doing today?' AS greeting FROM person;
 ```
   
-  **Alternative solution**
+  **Alternative solution:**
   
 ```sql
   UPDATE person SET name = CONCAT('Hello, ', name, ' how are you doing today?');
-  SELECT name AS greeting FROM person
+  SELECT name AS greeting FROM person;
 ```
   
   ## **4. Is n Divisible by x and y?**
@@ -87,7 +91,7 @@ name = "John" -> greeting = "Hello, John how are you doing today?"
   Task.
   You will be given a table with columns n, x, and y. Your task is to check if n is divisible by the two numbers x and y. All inputs are positive, non-zero digits.
 
-  **Solution**
+  **Solution:**
   
 ```sql
   SELECT id,
@@ -96,7 +100,7 @@ name = "John" -> greeting = "Hello, John how are you doing today?"
       THEN true
       ELSE false
     END AS res
-  FROM kata
+  FROM kata;
 ```
 
   ## **5. Expressions Matter**
@@ -114,7 +118,7 @@ Given a = 1, b = 2, c = 3:
 (1 + 2) * 3 = 9
 So the maximum value that you can obtain is 9.
 ```
-  **Solution**
+  **Solution:**
   
 ```sql
   SELECT GREATEST(a * b * c, a + b + c, a * (b + c), (a + b) * c)
