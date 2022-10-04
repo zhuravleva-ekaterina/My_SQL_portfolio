@@ -16,7 +16,6 @@
   SELECT x, REPLACE(x, ' ', '') AS res 
   FROM nospace
 ```
-</details>
 
 ## **1. Century From Year**
   
