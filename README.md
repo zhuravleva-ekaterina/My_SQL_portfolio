@@ -23,11 +23,13 @@
   Task.
   
   Given a year, return the century it is in.
+
 Examples
 1705 --> 18
 1900 --> 19
 1601 --> 17
 2000 --> 20
+
 In SQL, you will be given a table years with a column yr for the year. Return a table with a column century.
   
   **Solution**
