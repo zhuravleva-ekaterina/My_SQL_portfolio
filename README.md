@@ -23,19 +23,17 @@
   Task.
   
   Given a year, return the century it is in.
-
 Examples
 1705 --> 18
 1900 --> 19
 1601 --> 17
 2000 --> 20
-  
 In SQL, you will be given a table years with a column yr for the year. Return a table with a column century.
   
   **Solution**
 
 ```sql
-  SELECT  (yr + 99) / 100 as century
+  SELECT (yr + 99) / 100 as century
   FROM years;
 ```
 
@@ -47,14 +45,13 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
       WHEN yr%100 = 0 THEN yr/100
       WHEN yr%100 > 0 THEN yr/100+1
     END AS century
-  FROM years
+  FROM years;
 ```
 
   **Alternative solution**
   
 ```sql
-  SELECT
-  EXTRACT(CENTURY FROM TO_DATE(yr::text, 'YYYY')) AS century
+  SELECT EXTRACT(CENTURY FROM TO_DATE(yr::text, 'YYYY')) AS century
   FROM years;
 ```
 
