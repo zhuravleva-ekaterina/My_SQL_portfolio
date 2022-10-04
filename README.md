@@ -26,8 +26,11 @@
 
 Examples
 1705 --> 18
+  
 1900 --> 19
+  
 1601 --> 17
+  
 2000 --> 20
 
 In SQL, you will be given a table years with a column yr for the year. Return a table with a column century.
@@ -79,4 +82,43 @@ name = "John" -> greeting = "Hello, John how are you doing today?"
   SELECT name AS greeting FROM person
 ```
   
+  ## **4. Is n Divisible by x and y?**
+  
+  Task.
+  You will be given a table with columns n, x, and y. Your task is to check if n is divisible by the two numbers x and y. All inputs are positive, non-zero digits.
+
+  **Solution**
+  
+```sql
+  SELECT id,
+    CASE
+      WHEN n%x=0 AND n%y=0
+      THEN true
+      ELSE false
+    END AS res
+  FROM kata
+```
+
+  ## **5. Expressions Matter**
+  
+  Task.
+  Given three integers a, b, c where 1  ≤  a,  b,  c  ≤  10, return the largest number obtained after inserting the following operators and brackets in any order: +, *, (). You can use the same operator more than once, and it is not necessary to use all the operators and brackets. However, you must use a, b, and c only once, and you may not swap their order.
+
+Example:
+
+```
+Given a = 1, b = 2, c = 3:
+1 * (2 + 3) = 5
+1 * 2 * 3 = 6
+1 + 2 * 3 = 7
+(1 + 2) * 3 = 9
+So the maximum value that you can obtain is 9.
+```
+  **Solution**
+  
+```sql
+  SELECT GREATEST(a * b * c, a + b + c, a * (b + c), (a + b) * c)
+    AS res
+  FROM expression_matter;
+```
 </details>
