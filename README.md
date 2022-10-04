@@ -57,4 +57,26 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
   FROM years;
 ```
 
+  ## **3. Returning Strings**
+  
+  Task.
+  You are given a table person with a column name. Return a table with a column greeting that contains Hello, <name> how are you doing today?.
+
+Example:
+
+name = "John" -> greeting = "Hello, John how are you doing today?"
+
+  **Solution**
+  
+```sql
+  SELECT 'Hello, ' || name || ' how are you doing today?' AS greeting FROM person
+```
+  
+  **Alternative solution**
+  
+```sql
+  UPDATE person SET name = CONCAT('Hello, ', name, ' how are you doing today?');
+  SELECT name AS greeting FROM person
+```
+  
 </details>
