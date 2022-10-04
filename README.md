@@ -1,9 +1,7 @@
 ### MY SQL portfolio
 
-<details>
-<summary>
-  ## Simple queries 
-  </summary>
+## <details>
+<summary> Simple queries </summary>
 <br>
   
 ## **1. Remove String Spaces**
