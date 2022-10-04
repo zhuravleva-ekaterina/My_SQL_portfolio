@@ -1,6 +1,7 @@
 ### MY SQL portfolio
-
-## <Simple queries>
+---
+  <details>
+<summary>Simple queries</summary>
 <br>
   
 ## **1. Remove String Spaces**
@@ -12,6 +13,6 @@
 
 ```sql
   SELECT x, REPLACE(x, ' ', '') AS res 
-FROM nospace
+  FROM nospace
 ```
 </details>
