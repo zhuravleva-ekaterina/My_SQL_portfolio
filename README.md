@@ -18,7 +18,7 @@
   FROM nospace
 ```
 
-## **1. Century From Year**
+## **2. Century From Year**
   
   Task.
   
@@ -39,7 +39,7 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
   FROM years;
 ```
 
-  ** Alternative solution**
+  **Alternative solution**
   
 ```sql
   SELECT 
@@ -50,7 +50,7 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
   FROM years
 ```
 
-  ** Alternative solution**
+  **Alternative solution**
   
 ```sql
   SELECT
