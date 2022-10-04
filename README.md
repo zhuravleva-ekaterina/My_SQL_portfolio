@@ -228,3 +228,14 @@ Return a table with two columns (number1, number2), the value in number1 should 
 ```
 
 </details>
+
+  ---
+<details>
+<summary>Difficult queries</summary>
+<br>
+  
+## **1.**
+  
+  
+  
+  </details>
