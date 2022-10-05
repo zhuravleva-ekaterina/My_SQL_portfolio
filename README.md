@@ -282,8 +282,8 @@ Return a table with two columns (number1, number2), the value in number1 should 
 $$ price=(p_1*k_1+p_2*k_2)/(k_1+k_2), $$
 
 где 
-	$p1, p2 - цена книги в таблицах book и supply;
-	k1, k2 - количество книг в таблицах book и supply.$
+	p1, p2 - цена книги в таблицах book и supply;
+	k1, k2 - количество книг в таблицах book и supply.
   
   <details>
 <summary>Структура и наполнение таблиц</summary>
