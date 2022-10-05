@@ -325,7 +325,7 @@ Return a table with two columns (number1, number2), the value in number1 should 
 		INNER JOIN book ON genre.genre_id=book.genre_id
 		INNER JOIN author ON book.author_id=author.author_id
 	WHERE name_genre='Роман'
-	ORDER BY title 
+	ORDER BY title; 
 ```  
   </details>
 	
