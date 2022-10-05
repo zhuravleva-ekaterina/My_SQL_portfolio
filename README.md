@@ -348,8 +348,7 @@ price=(p_1*k_1+p_2*k_2)\(k_1+k_2)
     	b.price=(b.price*b.amount + s.price*s.amount)/(b.amount+s.amount),
    	s.amount=0
 	WHERE b.price <> s.price;
-```
-	  
+```  
   </details>
 	
   </details>
