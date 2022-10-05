@@ -12,7 +12,7 @@
   You are given a table 'nospace' with column 'x', return a table with column 'x' and your result in a column named 'res'.
   
   <details>
-**<summary>Solution</summary>**
+<summary>Solution</summary>
 <br>
 
 ```sql
@@ -40,14 +40,19 @@ Examples:
 
 In SQL, you will be given a table years with a column yr for the year. Return a table with a column century.
   
-  **Solution:**
-
+  <details>
+<summary>Solution</summary>
+<br>
+    
 ```sql
   SELECT (yr + 99) / 100 as century
   FROM years;
 ```
-
-  **Alternative solution:**
+  </details>
+  
+  <details>
+<summary>Alternative solution</summary>
+<br>
   
 ```sql
   SELECT 
@@ -57,14 +62,18 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
     END AS century
   FROM years;
 ```
+  </details>
 
-  **Alternative solution:**
+  <details>
+<summary>Alternative solution</summary>
+<br>
   
 ```sql
   SELECT EXTRACT(CENTURY FROM TO_DATE(yr::text, 'YYYY')) AS century
   FROM years;
 ```
-
+  </details>
+  
   ## **3. Returning Strings**
   
   Task.
@@ -76,25 +85,33 @@ Example:
 name = "John" -> greeting = "Hello, John how are you doing today?"
 ```
 
-  **Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
   
 ```sql
   SELECT 'Hello, ' || name || ' how are you doing today?' AS greeting FROM person;
 ```
+</details>
   
-  **Alternative solution:**
+  <details>
+<summary>Alternative solution</summary>
+<br>
   
 ```sql
   UPDATE person SET name = CONCAT('Hello, ', name, ' how are you doing today?');
   SELECT name AS greeting FROM person;
 ```
-  
+</details>
+    
   ## **4. Is n Divisible by x and y?**
   
   Task.
   You will be given a table with columns n, x, and y. Your task is to check if n is divisible by the two numbers x and y. All inputs are positive, non-zero digits.
 
-  **Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
   
 ```sql
   SELECT id,
@@ -105,7 +122,8 @@ name = "John" -> greeting = "Hello, John how are you doing today?"
     END AS res
   FROM kata;
 ```
-
+</details>
+     
   ## **5. Expressions Matter**
   
   Task.
@@ -121,14 +139,17 @@ Given a = 1, b = 2, c = 3:
 (1 + 2) * 3 = 9
 So the maximum value that you can obtain is 9.
 ```
-  **Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
   
 ```sql
   SELECT GREATEST(a * b * c, a + b + c, a * (b + c), (a + b) * c)
     AS res
   FROM expression_matter;
 ```
-
+</details>
+    
 ## **6.Count Odd Numbers below n**
 
 Task.
@@ -140,12 +161,15 @@ Examples (Input -> Output):
 15 -> 7 (because odd numbers below 15 are [1, 3, 5, 7, 9, 11, 13])
 ```
 
-**Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
 
 ```sql
   SELECT n, n/2 AS res FROM oddcount;
 ```
-
+</details>
+    
 ## **7.  Sum of odd numbers**
 
 Task.
@@ -168,27 +192,33 @@ n = 2 -> res = 8 (because 3 + 5 = 8)
 n = 3 -> res = 27 (because 7 + 9 + 11 = 27)
 ```
 
-**Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
 
 ```sql
   SELECT n * n * n AS res
   FROM nums;
 ```
-
+</details>
+    
 ## **8. Fake Binary**
 
 Task.
 Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
 Note: input will never be an empty string
 
-**Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
 
 ```sql
   SELECT x,
   regexp_replace(regexp_replace(x, '[0-4]', '0', 'g'), '[5-9]', '1', 'g') AS res
   FROM fakebin;
 ```
-
+</details>
+    
 ## **9. Convert to Hexadecimal**
 
 Task.
@@ -203,14 +233,17 @@ monsters table schema:
 - characteristics
 ```
 
-**Solution:**
+  <details>
+<summary>Solution</summary>
+<br>
 
 ```sql
   SELECT to_hex(legs) AS legs, 
           to_hex(arms) AS arms 
   FROM monsters;
 ```
-
+</details>
+    
 ## **10. Rounding Decimals**
 
 Task.
@@ -222,13 +255,16 @@ Given the following table 'decimals':
 ```
 Return a table with two columns (number1, number2), the value in number1 should be rounded down and the value in number2 should be rounded up.
 
-**Sollution:**
+  <details>
+<summary>Solution</summary>
+<br>
 
 ```sql
   SELECT floor(number1) AS number1, 
          ceiling(number2) AS number2 
   FROM decimals
 ```
+</details>
 
 </details>
 
