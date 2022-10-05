@@ -274,6 +274,15 @@ Return a table with two columns (number1, number2), the value in number1 should 
 <br>
   
 ## **1.**
+Задание.
+	
+Для книг, которые уже есть на складе (в таблице book), но по другой цене, чем в поставке (supply),  необходимо в таблице book увеличить количество на значение, указанное в поставке,  и пересчитать цену. А в таблице  supply обнулить количество этих книг. Формула для пересчета цены:
+
+price={(p_1*k_1+p_2*k_2)\over k_1+k_2}
+
+где  p1, p2 - цена книги в таблицах book и supply;
+
+       k1, k2 - количество книг в таблицах book и supply.
   
   <details>
 <summary>Структура и наполнение таблиц</summary>
@@ -327,4 +336,20 @@ Return a table with two columns (number1, number2), the value in number1 should 
     
 <details>
   
+  <details>
+<summary>Solution</summary>
+<br>
+
+```sql
+UPDATE book b
+        INNER JOIN author a USING(author_id)
+        INNER JOIN supply s ON b.title=s.title 
+                                AND a.name_author=s.author
+SET b.amount=b.amount + s.amount,
+    b.price=(b.price*b.amount + s.price*s.amount)/(b.amount+s.amount),
+    s.amount=0
+WHERE b.price <> s.price;
+```
+</details>
+	
   </details>
