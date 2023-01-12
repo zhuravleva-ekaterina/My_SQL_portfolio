@@ -3,8 +3,77 @@
   <details>
 <summary>Simple queries</summary>
 <br>
+
+  ## **1. Предложение GROUP BY, HAVING**
+**Задание.**
+	
+Найдите размеры жестких дисков, совпадающих у двух и более PC. Вывести: HD
+
+  <details>
+<summary>Структура и наполнение таблиц</summary>
+<br>
+
+Схема БД состоит из четырех таблиц:
+
+Схема БД состоит из четырех таблиц:
+	  
+Product(maker, model, type)
+	  
+PC(code, model, speed, ram, hd, cd, price)
+	  
+Laptop(code, model, speed, ram, hd, price, screen)
+	  
+Printer(code, model, color, type, price)
+	  
+Таблица Product представляет производителя (maker), номер модели (model) и тип ('PC' - ПК, 'Laptop' - ПК-блокнот или 'Printer' - принтер). Предполагается, что номера моделей в таблице Product уникальны для всех производителей и типов продуктов. В таблице PC для каждого ПК, однозначно определяемого уникальным кодом – code, указаны модель – model (внешний ключ к таблице Product), скорость - speed (процессора в мегагерцах), объем памяти - ram (в мегабайтах), размер диска - hd (в гигабайтах), скорость считывающего устройства - cd (например, '4x') и цена - price (в долларах). Таблица Laptop аналогична таблице РС за исключением того, что вместо скорости CD содержит размер экрана -screen (в дюймах). В таблице Printer для каждой модели принтера указывается, является ли он цветным - color ('y', если цветной), тип принтера - type (лазерный – 'Laser', струйный – 'Jet' или матричный – 'Matrix') и цена - price.
+
+  </details>
   
-## **1. Remove String Spaces**
+  <details>
+<summary>Solution</summary>
+<br>
+
+```sql
+	SELECT hd FROM pc
+	GROUP BY hd
+	HAVING count(hd)>1
+```  
+  </details>	
+
+  ## **2. Пересечение и разность**
+**Задание.**
+	
+Найдите производителя, выпускающего ПК, но не ПК-блокноты.
+
+  <details>
+<summary>Структура и наполнение таблиц</summary>
+<br>
+
+Схема БД состоит из четырех таблиц:
+	  
+Product(maker, model, type)
+	  
+PC(code, model, speed, ram, hd, cd, price)
+	  
+Laptop(code, model, speed, ram, hd, price, screen)
+	  
+Printer(code, model, color, type, price)
+	  
+Таблица Product представляет производителя (maker), номер модели (model) и тип ('PC' - ПК, 'Laptop' - ПК-блокнот или 'Printer' - принтер). Предполагается, что номера моделей в таблице Product уникальны для всех производителей и типов продуктов. В таблице PC для каждого ПК, однозначно определяемого уникальным кодом – code, указаны модель – model (внешний ключ к таблице Product), скорость - speed (процессора в мегагерцах), объем памяти - ram (в мегабайтах), размер диска - hd (в гигабайтах), скорость считывающего устройства - cd (например, '4x') и цена - price (в долларах). Таблица Laptop аналогична таблице РС за исключением того, что вместо скорости CD содержит размер экрана -screen (в дюймах). В таблице Printer для каждой модели принтера указывается, является ли он цветным - color ('y', если цветной), тип принтера - type (лазерный – 'Laser', струйный – 'Jet' или матричный – 'Matrix') и цена - price.
+  </details>
+  
+  <details>
+<summary>Solution</summary>
+<br>
+
+```sql
+	SELECT maker FROM Product WHERE type='PC'
+	EXCEPT SELECT maker FROM Product WHERE type='Laptop'
+```  
+  </details>	
+	
+	
+## **3. Remove String Spaces**
   
   Task.
   
@@ -21,7 +90,7 @@
 ```
   </details>
   
-## **2. Century From Year**
+## **4. Century From Year**
   
   Task.
   
@@ -74,7 +143,7 @@ In SQL, you will be given a table years with a column yr for the year. Return a 
 ```
   </details>
   
-  ## **3. Returning Strings**
+  ## **5. Returning Strings**
   
   Task.
   You are given a table person with a column name. Return a table with a column greeting that contains Hello, <name> how are you doing today?.
@@ -104,7 +173,7 @@ name = "John" -> greeting = "Hello, John how are you doing today?"
 ```
 </details>
     
-  ## **4. Is n Divisible by x and y?**
+  ## **6. Is n Divisible by x and y?**
   
   Task.
   You will be given a table with columns n, x, and y. Your task is to check if n is divisible by the two numbers x and y. All inputs are positive, non-zero digits.
@@ -124,7 +193,7 @@ name = "John" -> greeting = "Hello, John how are you doing today?"
 ```
 </details>
      
-  ## **5. Expressions Matter**
+  ## **7. Expressions Matter**
   
   Task.
   Given three integers a, b, c where 1  ≤  a,  b,  c  ≤  10, return the largest number obtained after inserting the following operators and brackets in any order: +, *, (). You can use the same operator more than once, and it is not necessary to use all the operators and brackets. However, you must use a, b, and c only once, and you may not swap their order.
@@ -150,7 +219,7 @@ So the maximum value that you can obtain is 9.
 ```
 </details>
     
-## **6.Count Odd Numbers below n**
+## **8.Count Odd Numbers below n**
 
 Task.
 Given a number n, return the number of positive odd numbers below n.
@@ -170,7 +239,7 @@ Examples (Input -> Output):
 ```
 </details>
     
-## **7.  Sum of odd numbers**
+## **9.  Sum of odd numbers**
 
 Task.
 Given the triangle of consecutive odd numbers:
@@ -202,7 +271,7 @@ n = 3 -> res = 27 (because 7 + 9 + 11 = 27)
 ```
 </details>
     
-## **8. Fake Binary**
+## **10. Fake Binary**
 
 Task.
 Given a string of digits, you should replace any digit below 5 with '0' and any digit 5 and above with '1'. Return the resulting string.
@@ -219,7 +288,7 @@ Note: input will never be an empty string
 ```
 </details>
     
-## **9. Convert to Hexadecimal**
+## **11. Convert to Hexadecimal**
 
 Task.
 Turn the numeric columns (arms, legs) into equivalent hexadecimal values.
@@ -244,7 +313,7 @@ monsters table schema:
 ```
 </details>
     
-## **10. Rounding Decimals**
+## **12. Rounding Decimals**
 
 Task.
 Given the following table 'decimals':
