@@ -409,4 +409,81 @@ Return a table with two columns (number1, number2), the value in number1 should 
 ```  
   </details>
 	
+  
+  ## **3.  Явные операции соединения, подзапрос**
+**Задание.**
+	
+Найдите производителей самых дешевых цветных принтеров. Вывести: maker, price
+
+  <details>
+<summary>Структура и наполнение таблиц</summary>
+<br>
+
+Схема БД состоит из четырех таблиц:
+
+Product(maker, model, type)
+
+PC(code, model, speed, ram, hd, cd, price)
+
+Laptop(code, model, speed, ram, hd, price, screen)
+
+Printer(code, model, color, type, price)
+
+Таблица Product представляет производителя (maker), номер модели (model) и тип ('PC' - ПК, 'Laptop' - ПК-блокнот или 'Printer' - принтер). Предполагается, что номера моделей в таблице Product уникальны для всех производителей и типов продуктов. В таблице PC для каждого ПК, однозначно определяемого уникальным кодом – code, указаны модель – model (внешний ключ к таблице Product), скорость - speed (процессора в мегагерцах), объем памяти - ram (в мегабайтах), размер диска - hd (в гигабайтах), скорость считывающего устройства - cd (например, '4x') и цена - price (в долларах). Таблица Laptop аналогична таблице РС за исключением того, что вместо скорости CD содержит размер экрана -screen (в дюймах). В таблице Printer для каждой модели принтера указывается, является ли он цветным - color ('y', если цветной), тип принтера - type (лазерный – 'Laser', струйный – 'Jet' или матричный – 'Matrix') и цена - price.
+
+  </details>
+
+  <details>
+<summary>Solution</summary>
+<br>
+
+```sql
+	SELECT DISTINCT maker, price
+	FROM product, printer
+	WHERE product.model = printer.model
+		AND printer.color = 'y'
+		AND printer.price = (SELECT MIN(price) FROM printer WHERE printer.color = 'y');
+```  
+  </details>
+
+  ## **4.  Явные операции соединения. Пересечение и разность**
+**Задание.**
+	
+Найдите производителей, которые производили бы как ПК
+со скоростью не менее 750 МГц, так и ПК-блокноты со скоростью не менее 750 МГц.
+Вывести: Maker
+
+  <details>
+<summary>Структура и наполнение таблиц</summary>
+<br>
+
+Схема БД состоит из четырех таблиц:
+
+Product(maker, model, type)
+
+PC(code, model, speed, ram, hd, cd, price)
+
+Laptop(code, model, speed, ram, hd, price, screen)
+
+Printer(code, model, color, type, price)
+
+Таблица Product представляет производителя (maker), номер модели (model) и тип ('PC' - ПК, 'Laptop' - ПК-блокнот или 'Printer' - принтер). Предполагается, что номера моделей в таблице Product уникальны для всех производителей и типов продуктов. В таблице PC для каждого ПК, однозначно определяемого уникальным кодом – code, указаны модель – model (внешний ключ к таблице Product), скорость - speed (процессора в мегагерцах), объем памяти - ram (в мегабайтах), размер диска - hd (в гигабайтах), скорость считывающего устройства - cd (например, '4x') и цена - price (в долларах). Таблица Laptop аналогична таблице РС за исключением того, что вместо скорости CD содержит размер экрана -screen (в дюймах). В таблице Printer для каждой модели принтера указывается, является ли он цветным - color ('y', если цветной), тип принтера - type (лазерный – 'Laser', струйный – 'Jet' или матричный – 'Matrix') и цена - price.
+
+  </details>
+  
+  <details>
+<summary>Solution</summary>
+<br>
+
+```sql
+	SELECT DISTINCT maker
+	FROM product t1 
+	JOIN pc t2 ON t1.model=t2.model
+	WHERE speed>=750 AND maker IN (
+		SELECT maker FROM product t1 
+		JOIN laptop t2 ON t1.model=t2.model
+		WHERE speed>=750);
+```  
+  </details>
+  
   </details>
